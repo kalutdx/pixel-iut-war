@@ -1,0 +1,14 @@
+body{
+    overflow:hidden;
+}
+
+#grid{
+    display:flex;
+    justify-content: center;
+    border-collapse: collapse;
+}
+
+.pixel{
+    width:4px;
+    height:4px;
+}
