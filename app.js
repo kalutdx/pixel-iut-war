@@ -8,8 +8,6 @@ import { Settings } from "./settings.js"
  * Will also add events to the generated pixels.
  */
 const displayGrid = () => {
-    let x=0;
-    let y=0;
     fetch(server+Settings.gridAccess)
       .then(response => response.json())
       .then(data =>{
@@ -22,13 +20,13 @@ const displayGrid = () => {
                 col.className = "pixel";
                 col.style.backgroundColor = c;
                 col.addEventListener("click", (event)=>{
+                    let x = col.cellIndex;
+                    let y = row.rowIndex;
                     addPixel(x, y);
                 })
                 row.appendChild(col);
-                x++;
             }
             grid.appendChild(row);
-            y++;
         }
       })
       .catch(error => console.error('Error :', error));
@@ -45,12 +43,13 @@ const displayGrid = () => {
 const addPixel = (x, y) => {
     const toAdd = {
         "color": document.getElementById('pixel-color-input').value,
-        "uid": document.getElementById('uid-input').textContent,
+        "uid": document.getElementById('uid-input').value,
         "col": x,
         "row": y
       }
+    console.log(JSON.stringify(toAdd));
     fetch(server+Settings.editPixel, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -84,7 +83,7 @@ const teamSelect = (uid, team) => {
         "nouvelleEquipe": 1
     }
     fetch(server+Settings.chooseTeam, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -109,3 +108,20 @@ const teamSelect = (uid, team) => {
 // ------ ADDING EVENTS TO ELEMENTS ------
 
 document.getElementById("display-grid").addEventListener("click", displayGrid);
+
+document.getElementById("team-1-selection").addEventListener("click", (event)=>{
+    let user = document.getElementById('uid-input').value;
+    teamSelect(user, 1);
+})
+document.getElementById("team-2-selection").addEventListener("click", (event)=>{
+    let user = document.getElementById('uid-input').value;
+    teamSelect(user, 2);
+})
+document.getElementById("team-3-selection").addEventListener("click", (event)=>{
+    let user = document.getElementById('uid-input').value;
+    teamSelect(user, 3);
+})
+document.getElementById("team-4-selection").addEventListener("click", (event)=>{
+    let user = document.getElementById('uid-input').value;
+    teamSelect(user, 4);
+})
