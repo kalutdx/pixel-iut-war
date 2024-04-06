@@ -1,14 +1,35 @@
-let server="https://pixel-api.codenestedu.fr"
 import { Settings } from "./settings.js"
 
-// ------ MAIN FUNCTIONS ------
+// ------ LOCAL METHODS ------
+
+/**
+ * Locally updates the table after placing a pixel.
+ * 
+ * @param {string} color Color of the pixel
+ * @param {number} x Column number
+ * @param {number} y Row number
+ */
+const updateLocalTab = (color, x, y) => {
+    const grid = document.getElementById("grid-body");
+    for (let r of grid.rows){
+        if (r.rowIndex === y){
+            for (let c of r.cells){
+                if (c.cellIndex === x){
+                    c.style.backgroundColor = color;
+                }
+            }
+        }
+    }
+}
+
+// ------ FETCH REQUESTS ------
 
 /**
  * Displays the screen in the form of a table.
  * Will also add events to the generated pixels.
  */
 const displayGrid = () => {
-    fetch(server+Settings.gridAccess)
+    fetch(Settings.server+Settings.gridAccess)
       .then(response => response.json())
       .then(data =>{
         const grid = document.getElementById("grid-body");
@@ -48,7 +69,7 @@ const addPixel = (x, y) => {
         "row": y
       }
     console.log(JSON.stringify(toAdd));
-    fetch(server+Settings.editPixel, {
+    fetch(Settings.server+Settings.editPixel, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -65,6 +86,7 @@ const addPixel = (x, y) => {
         })
         .then(data => {
             console.log('Pixel placed : ', data);
+            updateLocalTab(toAdd.color, x, y);
         })
         .catch(error =>{
             console.error('Error while adding pixel to grid : ', error);
@@ -82,7 +104,7 @@ const teamSelect = (uid, team) => {
         "uid": uid,
         "nouvelleEquipe": 1
     }
-    fetch(server+Settings.chooseTeam, {
+    fetch(Settings.server+Settings.chooseTeam, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
