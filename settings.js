@@ -14,4 +14,6 @@ export class Settings{
     // Grid settings
     static gridWidth = 100;
     static gridHeight = 100;
+    // UID Length
+    static uidLength = 8;
 }

@@ -1,21 +1,61 @@
-import { Settings } from "./settings.js"
+import { Settings } from "./settings.js";
+import { Texts } from "./texts.js";
+import { Utils } from "./utils.js";
 
 // ------ GETTERS ------
 
+/**
+ * Gets the entered UID
+ * @returns uid-input's value
+ */
 const getUid = () => {
     return document.getElementById('uid-input').value;
 }
 
+/**
+ * Gets the color from the color dialog
+ * @returns pixel-color-input's value
+ */
 const getColor = () => {
     return document.getElementById('pixel-color-input').value;
 }
 
+/**
+ * Gets the grid's body.
+ * @returns grid-body table
+ */
 const getGrid = () => {
     return document.getElementById("grid-body");
 }
 
+/**
+ * Gets the recent table.
+ * @returns play-history-tab table
+ */
 const getRecentTable = () => {
-    return document.getElementById("play-history-tab");
+    return document.getElementById("play-history-content");
+}
+
+/**
+ * Gets the time left paragraph
+ * @returns remaining-time's paragraph
+ */
+const getTimeLeftTag = () => {
+    return document.querySelector("#remaining-time p");
+}
+
+// ------ LOCAL STORAGE ------
+
+let myStorage = localStorage;
+
+const loadUid = () => {
+    try{
+        document.getElementById('uid-input').value = myStorage.getItem("uid");
+        console.log("Successfully loaded UID");
+    }
+    catch (SecurityError){
+        console.log("Not allowed by browser");
+    }
 }
 
 // ------ LOCAL METHODS ------
@@ -40,13 +80,35 @@ const updateLocalGrid = (color, x, y) => {
     }
 }
 
+const formatDate = (date) => {
+    let newdate = date.substring(0,10);
+    newdate = newdate.split('-').reverse();
+    const [d, m, y] = newdate;
+    return `${d}/${m}/${y}`;
+}
+
+const formatTime = (date) => {
+    let newtime = date.substring(11,19);
+    newtime = newtime.split(':');
+    const [h, m, s] = newtime;
+    return `${h}:${m}:${s}`;
+}
+
+const getSecondsFromMilliseconds = (ms) => {
+    return Math.floor(ms/1000);
+}
+
 // ------ FETCH REQUESTS ------
 
+/**
+ * Displays the recents actions in a table.
+ */
 const displayRecentActions = () => {
     fetch(Settings.server+Settings.userList+Settings.uidAsk+getUid())
     .then(response => response.json())
     .then(data =>{
         const tab = getRecentTable();
+        tab.innerHTML = '';
         for (const r of data){
             const {nom, equipe, lastModificationPixel, banned} = r;
             let row = document.createElement("tr");
@@ -57,7 +119,8 @@ const displayRecentActions = () => {
             c2.innerHTML = equipe;
             row.appendChild(c2);
             let c3 = document.createElement("td");
-            c3.innerHTML = lastModificationPixel;
+            c3.innerHTML = `${formatDate(lastModificationPixel)}
+                            \n${formatTime(lastModificationPixel)}`;
             row.appendChild(c3);
             let c4 = document.createElement("td");
             c4.innerHTML = banned;
@@ -65,10 +128,11 @@ const displayRecentActions = () => {
             tab.appendChild(row);
         }
     })
+    .catch(error => console.error('Error :', error));
 }
 
 /**
- * Displays the screen in the form of a table.
+ * Displays the grid in the form of a table.
  * Will also add events to the generated pixels.
  */
 const displayGrid = () => {
@@ -94,6 +158,19 @@ const displayGrid = () => {
         }
       })
       .catch(error => console.error('Error :', error));
+}
+
+/**
+ * 
+ */
+const displayTimeLeft = () => {
+    fetch(Settings.server+Settings.waitTime+Settings.uidAsk+getUid())
+    .then(response=>response.json())
+    .then(data=>{
+        let t = getTimeLeftTag();
+        t.innerHTML = `${Texts.timeLeft}${getSecondsFromMilliseconds(data.tempsAttente)}`;
+    })
+    .catch(error => console.error('Error :', error));
 }
 
 /**
@@ -172,7 +249,15 @@ const teamSelect = (uid, team) => {
 
 // ------ ADDING EVENTS TO ELEMENTS ------
 
-document.getElementById("display-grid").addEventListener("click", displayGrid);
+document.getElementById("save-uid").addEventListener("click", (event)=>{
+    try{
+        myStorage.setItem("uid", getUid());
+        console.log("Successfully saved UID");
+    }
+    catch (SecurityError){
+        console.log("Not allowed by browser");
+    }
+})
 
 document.getElementById("team-1-selection").addEventListener("click", (event)=>{
     let user = document.getElementById('uid-input').value;
@@ -191,4 +276,20 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
     teamSelect(user, 4);
 })
 
-displayRecentActions();
+// ------ MAIN ------
+
+const main = async () => {
+    // Loading Local Storage
+    loadUid();
+    // Main loop
+    while(true){
+        displayGrid();
+        if (getUid().length === Settings.uidLength){
+            displayTimeLeft();
+            displayRecentActions();
+        }
+        await Utils.sleep(500);
+    }
+}
+
+main();
