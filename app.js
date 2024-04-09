@@ -44,6 +44,20 @@ const getTimeLeftTag = () => {
     return document.querySelector("#remaining-time p");
 }
 
+// ------ LOCAL STORAGE ------
+
+let myStorage = localStorage;
+
+const loadUid = () => {
+    try{
+        document.getElementById('uid-input').value = myStorage.getItem("uid");
+        console.log("Successfully loaded UID");
+    }
+    catch (SecurityError){
+        console.log("Not allowed by browser");
+    }
+}
+
 // ------ LOCAL METHODS ------
 
 /**
@@ -235,6 +249,16 @@ const teamSelect = (uid, team) => {
 
 // ------ ADDING EVENTS TO ELEMENTS ------
 
+document.getElementById("save-uid").addEventListener("click", (event)=>{
+    try{
+        myStorage.setItem("uid", getUid());
+        console.log("Successfully saved UID");
+    }
+    catch (SecurityError){
+        console.log("Not allowed by browser");
+    }
+})
+
 document.getElementById("team-1-selection").addEventListener("click", (event)=>{
     let user = document.getElementById('uid-input').value;
     teamSelect(user, 1);
@@ -255,6 +279,9 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
 // ------ MAIN ------
 
 const main = async () => {
+    // Loading Local Storage
+    loadUid();
+    // Main loop
     while(true){
         displayGrid();
         if (getUid().length === Settings.uidLength){
