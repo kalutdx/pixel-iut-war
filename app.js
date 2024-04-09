@@ -1,21 +1,42 @@
 import { Settings } from "./settings.js"
+import { Texts } from "./texts.js"
 
 // ------ GETTERS ------
 
+/**
+ * Gets the entered UID
+ * @returns uid-input's value
+ */
 const getUid = () => {
     return document.getElementById('uid-input').value;
 }
 
+/**
+ * Gets the color from the color dialog
+ * @returns pixel-color-input's value
+ */
 const getColor = () => {
     return document.getElementById('pixel-color-input').value;
 }
 
+/**
+ * Gets the grid's body.
+ * @returns grid-body table
+ */
 const getGrid = () => {
     return document.getElementById("grid-body");
 }
 
+/**
+ * Gets the recent table.
+ * @returns play-history-tab table
+ */
 const getRecentTable = () => {
     return document.getElementById("play-history-tab");
+}
+
+const getTimeLeftTag = () => {
+    return document.querySelector("#remaining-time p");
 }
 
 // ------ LOCAL METHODS ------
@@ -42,6 +63,9 @@ const updateLocalGrid = (color, x, y) => {
 
 // ------ FETCH REQUESTS ------
 
+/**
+ * Displays the recents actions in a table.
+ */
 const displayRecentActions = () => {
     fetch(Settings.server+Settings.userList+Settings.uidAsk+getUid())
     .then(response => response.json())
@@ -65,10 +89,11 @@ const displayRecentActions = () => {
             tab.appendChild(row);
         }
     })
+    .catch(error => console.error('Error :', error));
 }
 
 /**
- * Displays the screen in the form of a table.
+ * Displays the grid in the form of a table.
  * Will also add events to the generated pixels.
  */
 const displayGrid = () => {
@@ -94,6 +119,16 @@ const displayGrid = () => {
         }
       })
       .catch(error => console.error('Error :', error));
+}
+
+const displayTimeLeft = () => {
+    fetch(Settings.server+Settings.waitTime+Settings.uidAsk+getUid())
+    .then(response=>response.json())
+    .then(data=>{
+        let t = getTimeLeftTag();
+        t.innerHTML = `${Texts.timeLeft}${data.tempsAttente}`;
+    })
+    .catch(error => console.error('Error :', error));
 }
 
 /**
@@ -190,5 +225,7 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
     let user = document.getElementById('uid-input').value;
     teamSelect(user, 4);
 })
+
+document.getElementById("display-time").addEventListener("click", displayTimeLeft);
 
 displayRecentActions();
