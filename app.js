@@ -35,6 +35,10 @@ const getRecentTable = () => {
     return document.getElementById("play-history-tab");
 }
 
+/**
+ * Gets the time left paragraph
+ * @returns remaining-time's paragraph
+ */
 const getTimeLeftTag = () => {
     return document.querySelector("#remaining-time p");
 }
@@ -207,8 +211,6 @@ const teamSelect = (uid, team) => {
 
 // ------ ADDING EVENTS TO ELEMENTS ------
 
-document.getElementById("display-grid").addEventListener("click", displayGrid);
-
 document.getElementById("team-1-selection").addEventListener("click", (event)=>{
     let user = document.getElementById('uid-input').value;
     teamSelect(user, 1);
@@ -225,7 +227,3 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
     let user = document.getElementById('uid-input').value;
     teamSelect(user, 4);
 })
-
-document.getElementById("display-time").addEventListener("click", displayTimeLeft);
-
-displayRecentActions();
