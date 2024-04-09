@@ -3,6 +3,7 @@ export class Settings{
     // Server address
     static server = "https://pixel-api.codenestedu.fr";
     // GET
+    static uidAsk = "?uid="
     static gridAccess = "/tableau";
     static waitTime = "/temps-attente";
     static teamUser = "/equipe-utilisateur";
@@ -13,6 +14,4 @@ export class Settings{
     // Grid settings
     static gridWidth = 100;
     static gridHeight = 100;
-
-    constructor(){}
 }

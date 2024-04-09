@@ -1,5 +1,23 @@
 import { Settings } from "./settings.js"
 
+// ------ GETTERS ------
+
+const getUid = () => {
+    return document.getElementById('uid-input').value;
+}
+
+const getColor = () => {
+    return document.getElementById('pixel-color-input').value;
+}
+
+const getGrid = () => {
+    return document.getElementById("grid-body");
+}
+
+const getRecentTable = () => {
+    return document.getElementById("play-history-tab");
+}
+
 // ------ LOCAL METHODS ------
 
 /**
@@ -9,8 +27,8 @@ import { Settings } from "./settings.js"
  * @param {number} x Column number
  * @param {number} y Row number
  */
-const updateLocalTab = (color, x, y) => {
-    const grid = document.getElementById("grid-body");
+const updateLocalGrid = (color, x, y) => {
+    const grid = getGrid();
     for (let r of grid.rows){
         if (r.rowIndex === y){
             for (let c of r.cells){
@@ -24,6 +42,31 @@ const updateLocalTab = (color, x, y) => {
 
 // ------ FETCH REQUESTS ------
 
+const displayRecentActions = () => {
+    fetch(Settings.server+Settings.userList+Settings.uidAsk+getUid())
+    .then(response => response.json())
+    .then(data =>{
+        const tab = getRecentTable();
+        for (const r of data){
+            const {nom, equipe, lastModificationPixel, banned} = r;
+            let row = document.createElement("tr");
+            let c1 = document.createElement("td");
+            c1.innerHTML = nom;
+            row.appendChild(c1);
+            let c2 = document.createElement("td");
+            c2.innerHTML = equipe;
+            row.appendChild(c2);
+            let c3 = document.createElement("td");
+            c3.innerHTML = lastModificationPixel;
+            row.appendChild(c3);
+            let c4 = document.createElement("td");
+            c4.innerHTML = banned;
+            row.appendChild(c4);
+            tab.appendChild(row);
+        }
+    })
+}
+
 /**
  * Displays the screen in the form of a table.
  * Will also add events to the generated pixels.
@@ -32,7 +75,7 @@ const displayGrid = () => {
     fetch(Settings.server+Settings.gridAccess)
       .then(response => response.json())
       .then(data =>{
-        const grid = document.getElementById("grid-body");
+        const grid = getGrid();
         grid.innerHTML = '';
         for (let r of data){
             let row = document.createElement("tr");
@@ -63,8 +106,8 @@ const displayGrid = () => {
  */
 const addPixel = (x, y) => {
     const toAdd = {
-        "color": document.getElementById('pixel-color-input').value,
-        "uid": document.getElementById('uid-input').value,
+        "color": getColor(),
+        "uid": getUid(),
         "col": x,
         "row": y
       }
@@ -86,7 +129,7 @@ const addPixel = (x, y) => {
         })
         .then(data => {
             console.log('Pixel placed : ', data);
-            updateLocalTab(toAdd.color, x, y);
+            updateLocalGrid(toAdd.color, x, y);
         })
         .catch(error =>{
             console.error('Error while adding pixel to grid : ', error);
@@ -147,3 +190,5 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
     let user = document.getElementById('uid-input').value;
     teamSelect(user, 4);
 })
+
+displayRecentActions();
