@@ -1,3 +1,3 @@
 export class Utils{
-    sleep = (ms) => new Promise(r => setTimeout(r, ms));
+    static sleep = (ms) => new Promise(r => setTimeout(r, ms));
 }

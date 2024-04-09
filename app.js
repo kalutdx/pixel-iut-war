@@ -33,7 +33,7 @@ const getGrid = () => {
  * @returns play-history-tab table
  */
 const getRecentTable = () => {
-    return document.getElementById("play-history-tab");
+    return document.getElementById("play-history-content");
 }
 
 /**
@@ -66,6 +66,24 @@ const updateLocalGrid = (color, x, y) => {
     }
 }
 
+const formatDate = (date) => {
+    let newdate = date.substring(0,10);
+    newdate = newdate.split('-').reverse();
+    const [d, m, y] = newdate;
+    return `${d}/${m}/${y}`;
+}
+
+const formatTime = (date) => {
+    let newtime = date.substring(11,19);
+    newtime = newtime.split(':');
+    const [h, m, s] = newtime;
+    return `${h}:${m}:${s}`;
+}
+
+const getSecondsFromMilliseconds = (ms) => {
+    return Math.floor(ms/1000);
+}
+
 // ------ FETCH REQUESTS ------
 
 /**
@@ -76,6 +94,7 @@ const displayRecentActions = () => {
     .then(response => response.json())
     .then(data =>{
         const tab = getRecentTable();
+        tab.innerHTML = '';
         for (const r of data){
             const {nom, equipe, lastModificationPixel, banned} = r;
             let row = document.createElement("tr");
@@ -86,7 +105,8 @@ const displayRecentActions = () => {
             c2.innerHTML = equipe;
             row.appendChild(c2);
             let c3 = document.createElement("td");
-            c3.innerHTML = lastModificationPixel;
+            c3.innerHTML = `${formatDate(lastModificationPixel)}
+                            \n${formatTime(lastModificationPixel)}`;
             row.appendChild(c3);
             let c4 = document.createElement("td");
             c4.innerHTML = banned;
@@ -126,12 +146,15 @@ const displayGrid = () => {
       .catch(error => console.error('Error :', error));
 }
 
+/**
+ * 
+ */
 const displayTimeLeft = () => {
     fetch(Settings.server+Settings.waitTime+Settings.uidAsk+getUid())
     .then(response=>response.json())
     .then(data=>{
         let t = getTimeLeftTag();
-        t.innerHTML = `${Texts.timeLeft}${data.tempsAttente}`;
+        t.innerHTML = `${Texts.timeLeft}${getSecondsFromMilliseconds(data.tempsAttente)}`;
     })
     .catch(error => console.error('Error :', error));
 }
@@ -234,8 +257,10 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
 const main = async () => {
     while(true){
         displayGrid();
-
+        displayTimeLeft();
+        displayRecentActions();
+        await Utils.sleep(500);
     }
 }
 
-//main();
+main();
