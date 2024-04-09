@@ -9,33 +9,39 @@
 <body>
     <div class="container">
         <!-- Left section -->
-        <table id="play-history-tab">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Team</th>
-                    <th scope="col">Last modified</th>
-                    <th scope="col">Banned</th>
-                </tr>
-            </thead>
-            <tbody id="play-history-content"></tbody>
-        </table>
-        <!-- Middle section -->
-        <table id="grid">
-            <tbody id="grid-body"></tbody>
-        </table>
-        <!-- Right section -->
-        <input type="password" id="uid-input">
-        <button id="save-uid">Save</button>
-        <input type="color" id="pixel-color-input">
-        <div id="team-selection">
-            <button id="team-1-selection">Team 1</button>
-            <button id="team-2-selection">Team 2</button>
-            <button id="team-3-selection">Team 3</button>
-            <button id="team-4-selection">Team 4</button>
+        <div class="side-menu" id="left-section">
+            <table id="play-history-tab">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Team</th>
+                        <th scope="col">Last modified</th>
+                        <th scope="col">Banned</th>
+                    </tr>
+                </thead>
+                <tbody id="play-history-content"></tbody>
+            </table>
         </div>
-        <div id="remaining-time">
-            <p></p>
+        <!-- Middle section -->
+        <input type="color" id="pixel-color-input">
+        <div id="middle-section">
+            <table id="grid">
+                <tbody id="grid-body"></tbody>
+            </table>
+        </div>
+        <!-- Right section -->
+        <div class="side-menu" id="right-section">
+            <input type="password" id="uid-input">
+            <button id="save-uid">Save</button>
+            <div id="team-selection">
+                <button id="team-1-selection">Team 1</button>
+                <button id="team-2-selection">Team 2</button>
+                <button id="team-3-selection">Team 3</button>
+                <button id="team-4-selection">Team 4</button>
+            </div>
+            <div id="remaining-time">
+                <p></p>
+            </div>
         </div>
     </div>
     <script type="module" src="app.js"></script>
