@@ -257,8 +257,10 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
 const main = async () => {
     while(true){
         displayGrid();
-        displayTimeLeft();
-        displayRecentActions();
+        if (getUid().length === Settings.uidLength){
+            displayTimeLeft();
+            displayRecentActions();
+        }
         await Utils.sleep(500);
     }
 }
