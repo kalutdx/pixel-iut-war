@@ -1,5 +1,6 @@
-import { Settings } from "./settings.js"
-import { Texts } from "./texts.js"
+import { Settings } from "./settings.js";
+import { Texts } from "./texts.js";
+import { Utils } from "./utils.js";
 
 // ------ GETTERS ------
 
@@ -227,3 +228,14 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
     let user = document.getElementById('uid-input').value;
     teamSelect(user, 4);
 })
+
+// ------ MAIN ------
+
+const main = async () => {
+    while(true){
+        displayGrid();
+
+    }
+}
+
+//main();
