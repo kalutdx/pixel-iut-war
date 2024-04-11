@@ -9,21 +9,8 @@
 <body>
     <div class="container">
         <!-- Left section -->
-        <div class="side-menu" id="left-menu">
-            <input type="checkbox" id="left-menu-button"></button>
-            <div id="left-section">
-                <table id="play-history-tab">
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Team</th>
-                            <th scope="col">Last modified</th>
-                            <th scope="col">Banned</th>
-                        </tr>
-                    </thead>
-                    <tbody id="play-history-content"></tbody>
-                </table>
-            </div>
+        <div class="filler-section">
+
         </div>
         <!-- Middle section -->
         <div id="middle-section">
@@ -33,8 +20,11 @@
             </table>
         </div>
         <!-- Right section -->
-        <div class="side-menu" id="right-menu">
-            <input type="checkbox" id="right-menu-button"></button>
+        <div id="right-menu-button-container">
+            <button id="right-menu-button"></button>
+        </div>
+        <div id="right-menu">
+            <h1>Settings</h1>
             <div id="right-section">
                 <input type="password" id="uid-input">
                 <button id="save-uid">Save</button> 
@@ -47,6 +37,17 @@
                 <div id="remaining-time">
                     <p></p>
                 </div>
+                <table id="play-history-tab">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Team</th>
+                            <th scope="col">Last modified</th>
+                            <th scope="col">Banned</th>
+                        </tr>
+                    </thead>
+                    <tbody id="play-history-content"></tbody>
+                </table>
             </div>
         </div>
     </div>

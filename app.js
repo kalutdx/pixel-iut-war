@@ -276,14 +276,17 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
     teamSelect(user, 4);
 })
 
-// Style functions
+// ------ STYLE FUNCTIONS ------
 
-document.getElementById("right-menu-button").addEventListener("change", (event)=>{
+let MenuOpen = false;
+
+document.getElementById("right-menu-button").addEventListener("click", (event)=>{
     let menu = document.getElementById("right-menu");
-    if (event.checked){
-        menu.style.background="#00000050";
+    MenuOpen = !MenuOpen;
+    if (MenuOpen){
+        menu.style.transform="translateX(0vw)"
     } else {
-        menu.style.background="#00000000";
+        menu.style.transform="translateX(25vw)"
     }
 });
 
