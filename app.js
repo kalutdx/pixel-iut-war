@@ -17,7 +17,7 @@ const getUid = () => {
  * @returns pixel-color-input's value
  */
 const getColor = () => {
-    return document.getElementById('pixel-color-input').value;
+    return document.getElementById('color-input').value;
 }
 
 /**
@@ -275,6 +275,20 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
     let user = document.getElementById('uid-input').value;
     teamSelect(user, 4);
 })
+
+// ------ STYLE FUNCTIONS ------
+
+let MenuOpen = false;
+
+document.getElementById("right-menu-button").addEventListener("click", (event)=>{
+    let menu = document.getElementById("right-menu");
+    MenuOpen = !MenuOpen;
+    if (MenuOpen){
+        menu.style.transform="translateX(0vw)"
+    } else {
+        menu.style.transform="translateX(25vw)"
+    }
+});
 
 // ------ MAIN ------
 

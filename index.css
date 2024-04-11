@@ -12,9 +12,30 @@ body{
     justify-content: space-between;
 }
 
-.side-menu{
-    background:#00000080;
-    width:20vw;
+
+.filler-section{
+    width:25vw;
+}
+
+#right-menu{
+    transition:0.5s;
+    transform: translateX(25vw);
+    background:#00000050;
+    width:25vw;
+}
+
+#right-menu-button-container{
+    width:100vw;
+    position:absolute;
+    display:flex;
+    flex-direction: row-reverse;
+    z-index: 999;
+}
+
+#right-menu-button{
+    width:35px;
+    height:35px;
+    position:absolute;
 }
 
 #grid{
@@ -24,11 +45,25 @@ body{
     border-collapse: collapse;
 }
 
-#pixel-color-input{
+#grid-body{
+    box-shadow: 0px 0px 25px 1px #00000070;
+}
+
+#color-input{
+    margin-bottom:50px;
+    width:100px;
+    height:50px;
     position:absolute;
+    align-self: flex-end;
+    box-shadow: 0px 0px 5px #00000070;
 }
 
 .pixel{
     width:4px;
     height:4px;
+}
+
+#middle-section{
+    display:flex;
+    justify-content: center;
 }
