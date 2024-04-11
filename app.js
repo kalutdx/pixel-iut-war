@@ -276,6 +276,17 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
     teamSelect(user, 4);
 })
 
+// Style functions
+
+document.getElementById("right-menu-button").addEventListener("change", (event)=>{
+    let menu = document.getElementById("right-menu");
+    if (event.checked){
+        menu.style.background="#00000050";
+    } else {
+        menu.style.background="#00000000";
+    }
+});
+
 // ------ MAIN ------
 
 const main = async () => {
