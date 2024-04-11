@@ -17,7 +17,7 @@ const getUid = () => {
  * @returns pixel-color-input's value
  */
 const getColor = () => {
-    return document.getElementById('pixel-color-input').value;
+    return document.getElementById('color-input').value;
 }
 
 /**
