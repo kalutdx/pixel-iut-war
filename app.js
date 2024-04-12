@@ -2,6 +2,10 @@ import { Settings } from "./settings.js";
 import { Texts } from "./texts.js";
 import { Utils } from "./utils.js";
 
+// ------ VARIABLES ------
+
+const zoom = 4;
+
 // ------ GETTERS ------
 
 /**
@@ -147,6 +151,8 @@ const displayGrid = () => {
                 let col = document.createElement("td");
                 col.className = "pixel";
                 col.style.backgroundColor = c;
+                col.style.width = zoom;
+                col.style.height = zoom;
                 col.addEventListener("click", (event)=>{
                     let x = col.cellIndex;
                     let y = row.rowIndex;
@@ -222,7 +228,7 @@ const addPixel = (x, y) => {
 const teamSelect = (uid, team) => {
     const toAdd = {
         "uid": uid,
-        "nouvelleEquipe": 1
+        "nouvelleEquipe": team
     }
     fetch(Settings.server+Settings.chooseTeam, {
         method: 'PUT',
@@ -289,6 +295,17 @@ document.getElementById("right-menu-button").addEventListener("click", (event)=>
         menu.style.transform="translateX(25vw)"
     }
 });
+
+document.addEventListener('scroll', (event) =>{
+    const elem = document.getElementById("grid-body");
+    console.log("scroll !")
+    for (let r of elem.childNodes){
+        for (let c of r.childNodes){
+            zoom = zoom+Utils.zoomSpeed;
+        }
+    }
+    
+})
 
 // ------ MAIN ------
 
