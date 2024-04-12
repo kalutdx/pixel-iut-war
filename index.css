@@ -38,6 +38,16 @@ body{
     position:absolute;
 }
 
+#right-menu h1{
+    margin-left:15px;
+    text-transform: uppercase;
+}
+
+#right-menu h2{
+    margin-right:25px;
+    text-align: end;
+}
+
 #grid{
     display:flex;
     justify-content: center;
@@ -59,6 +69,7 @@ body{
 }
 
 .pixel{
+    transition:0.05s;
     width:4px;
     height:4px;
 }
@@ -66,4 +77,14 @@ body{
 #middle-section{
     display:flex;
     justify-content: center;
+}
+
+footer{
+    position:absolute;
+    align-self:flex-end;
+}
+
+footer p{
+    font-size:12px;
+    color:#000000A0;
 }
