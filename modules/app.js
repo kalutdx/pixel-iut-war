@@ -1,6 +1,8 @@
 import { Settings } from "./settings.js";
 import { Texts } from "./texts.js";
 import { Utils } from "./utils.js";
+import { Infobox } from "./infobox.js";
+import { Unitxt } from "./unitxt.js";
 
 // ------ VARIABLES ------
 
@@ -243,6 +245,10 @@ const teamSelect = (uid, team) => {
 
 // ------ ADDING EVENTS TO ELEMENTS ------
 
+/*- Infobox button event -*/
+document.getElementById("infobox-confirm").addEventListener("click", (event)=>{
+    Infobox.closeInfobox();
+})
 
 /*- Saving UID -*/
 document.getElementById("save-uid").addEventListener("click", (event)=>{
