@@ -10,7 +10,7 @@ export class Unitxt{
 
     static unknownError = 'An unknown error has occured.'
     
-    static unknownUID = 'The UID you\'ve entered appears to be unknown.'
+    static unknownUID = 'Unknown user. Please enter a correct UID and try again.'
 
     static missingTeam = 'You don\'t belong to any team. Go pick one !';
     static teamJoinError = 'An error has occured when attempting to join a team.';
