@@ -127,7 +127,7 @@ const displayRecentActions = () => {
                             \n${formatTime(lastModificationPixel)}`;
             row.appendChild(c3);
             let c4 = document.createElement("td");
-            c4.innerHTML = banned;
+            c4.innerHTML = Utils.displayBoolean(banned);
             row.appendChild(c4);
             tab.appendChild(row);
         }
