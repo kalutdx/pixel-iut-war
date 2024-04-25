@@ -282,31 +282,6 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
     teamSelect(user, 4);
 })
 
-// ------ STYLE FUNCTIONS ------
-
-let MenuOpen = false;
-
-document.getElementById("right-menu-button").addEventListener("click", (event)=>{
-    let menu = document.getElementById("right-menu");
-    MenuOpen = !MenuOpen;
-    if (MenuOpen){
-        menu.style.transform="translateX(0vw)"
-    } else {
-        menu.style.transform="translateX(25vw)"
-    }
-});
-
-document.addEventListener('scroll', (event) =>{
-    const elem = document.getElementById("grid-body");
-    console.log("scroll !")
-    for (let r of elem.childNodes){
-        for (let c of r.childNodes){
-            zoom = zoom+Utils.zoomSpeed;
-        }
-    }
-    
-})
-
 // ------ MAIN ------
 
 const main = async () => {

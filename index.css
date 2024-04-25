@@ -1,52 +1,27 @@
+/*------ Generic ------*/
+
 body{
-    overflow:hidden;
     font-family:Arial;
     margin:0;
     padding:0;
 }
 
 .container{
-    width:100vw;
     height:100vh;
     display:flex;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
 
-.filler-section{
-    width:25vw;
-}
 
-#right-menu{
-    transition:0.5s;
-    transform: translateX(25vw);
-    background:#00000050;
-    width:25vw;
-}
+/*------ Main section style ------*/
 
-#right-menu-button-container{
-    width:100vw;
-    position:absolute;
+#main-section{
     display:flex;
-    flex-direction: row-reverse;
-    z-index: 999;
+    justify-content: center;
 }
 
-#right-menu-button{
-    width:35px;
-    height:35px;
-    position:absolute;
-}
-
-#right-menu h1{
-    margin-left:15px;
-    text-transform: uppercase;
-}
-
-#right-menu h2{
-    margin-right:25px;
-    text-align: end;
-}
+/*- Grid style -*/
 
 #grid{
     display:flex;
@@ -59,6 +34,14 @@ body{
     box-shadow: 0px 0px 25px 1px #00000070;
 }
 
+.pixel{
+    transition:0.05s;
+    width:4px;
+    height:4px;
+}
+
+/*- Toolstrip -*/
+
 #color-input{
     margin-bottom:50px;
     width:100px;
@@ -68,23 +51,18 @@ body{
     box-shadow: 0px 0px 5px #00000070;
 }
 
-.pixel{
-    transition:0.05s;
-    width:4px;
-    height:4px;
+/*------ Menu style ------*/
+
+#menu-container{
+    background:#00000050;
+    width:25vw;
 }
 
-#middle-section{
-    display:flex;
-    justify-content: center;
+#menu-container h1{
+    margin-left:15px;
+    text-transform: uppercase;
 }
 
-footer{
-    position:absolute;
-    align-self:flex-end;
-}
-
-footer p{
-    font-size:12px;
-    color:#000000A0;
+#menu-container h2{
+    margin-left:25px;
 }
