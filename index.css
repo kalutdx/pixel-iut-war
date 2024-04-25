@@ -7,16 +7,14 @@ body{
 }
 
 .container{
-    height:100vh;
     display:flex;
     flex-direction: column;
 }
 
-
-
 /*------ Main section style ------*/
 
 #main-section{
+    height:100vh;
     display:flex;
     justify-content: center;
 }
@@ -26,8 +24,9 @@ body{
 #grid{
     display:flex;
     justify-content: center;
-    align-items:center;
+    align-self:center;
     border-collapse: collapse;
+    position:fixed;
 }
 
 #grid-body{
@@ -42,11 +41,18 @@ body{
 
 /*- Toolstrip -*/
 
+#toolstrip-container{
+    position:fixed;
+    display:flex;
+    justify-content: space-between;
+    width:250px;
+    align-self:flex-end;
+}
+
 #color-input{
     margin-bottom:50px;
     width:100px;
     height:50px;
-    position:absolute;
     align-self: flex-end;
     box-shadow: 0px 0px 5px #00000070;
 }
@@ -54,8 +60,9 @@ body{
 /*------ Menu style ------*/
 
 #menu-container{
-    background:#00000050;
-    width:25vw;
+    color:white;
+    background:#000000A0;
+    z-index: 1;
 }
 
 #menu-container h1{
@@ -65,4 +72,18 @@ body{
 
 #menu-container h2{
     margin-left:25px;
+}
+
+#menu-container .menu-content{
+    margin-left:50px;
+}
+
+#menu-container footer{
+    text-align: center;
+}
+
+/*- Play History -*/
+
+#play-history-tab{
+    
 }

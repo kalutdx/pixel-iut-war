@@ -10,35 +10,33 @@
     <div class="container">
         <!-- Grid section -->
         <div id="main-section">
+            <table id="grid">
+                <tbody id="grid-body"></tbody>
+            </table>
             <div id="toolstrip-container">
                 <input type="color" id="color-input">
                 <div id="remaining-time">
                     <p></p>
                 </div>
             </div>
-            <table id="grid">
-                <tbody id="grid-body"></tbody>
-            </table>
         </div>
-        <!-- Settings section -->
+        <!-- Menu section -->
         <div id="menu-container">
-            <h1>Settings</h1>
+            <h1>Menu</h1>
             <h2>User ID</h2>
-            <div id="uid-section">
+            <div id="uid-section" class="menu-content">
                 <input type="password" id="uid-input">
                 <button id="save-uid">Save</button> 
             </div>
             <h2>Team Selection</h2>
-            <div id="team-selection">
+            <div id="team-selection" class="menu-content">
                 <button id="team-1-selection">Team 1</button>
                 <button id="team-2-selection">Team 2</button>
                 <button id="team-3-selection">Team 3</button>
                 <button id="team-4-selection">Team 4</button>
             </div>
-            <h2>Time Remaining</h2>
-            
-            <h2>Play history</h2>
-            <table id="play-history-tab">
+            <h1>Play history</h1>
+            <table id="play-history-tab" class="menu-content">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -49,6 +47,9 @@
                 </thead>
                 <tbody id="play-history-content"></tbody>
             </table>
+            <footer>
+                <p>© Copyright notice.</p>
+            </footer>
         </div>
     </div>
     <script type="module" src="app.js"></script>
