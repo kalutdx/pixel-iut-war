@@ -4,6 +4,9 @@ import { Utils } from "./utils.js";
 
 // ------ VARIABLES ------
 
+/**
+ * Zoom level. Deprecated.
+ */
 const zoom = 4;
 
 // ------ GETTERS ------
@@ -52,6 +55,9 @@ const getTimeLeftTag = () => {
 
 let myStorage = localStorage;
 
+/**
+ * Attempts to load the User's UID from localStorage.
+ */
 const loadUid = () => {
     try{
         document.getElementById('uid-input').value = myStorage.getItem("uid");
@@ -84,24 +90,6 @@ const updateLocalGrid = (color, x, y) => {
     }
 }
 
-const formatDate = (date) => {
-    let newdate = date.substring(0,10);
-    newdate = newdate.split('-').reverse();
-    const [d, m, y] = newdate;
-    return `${d}/${m}/${y}`;
-}
-
-const formatTime = (date) => {
-    let newtime = date.substring(11,19);
-    newtime = newtime.split(':');
-    const [h, m, s] = newtime;
-    return `${h}:${m}:${s}`;
-}
-
-const getSecondsFromMilliseconds = (ms) => {
-    return Math.floor(ms/1000);
-}
-
 // ------ FETCH REQUESTS ------
 
 /**
@@ -123,8 +111,8 @@ const displayRecentActions = () => {
             c2.innerHTML = equipe;
             row.appendChild(c2);
             let c3 = document.createElement("td");
-            c3.innerHTML = `${formatDate(lastModificationPixel)}
-                            \n${formatTime(lastModificationPixel)}`;
+            c3.innerHTML = `${Utils.formatDate(lastModificationPixel)}
+                            \n${Utils.formatTime(lastModificationPixel)}`;
             row.appendChild(c3);
             let c4 = document.createElement("td");
             c4.innerHTML = Utils.displayBoolean(banned);
@@ -167,14 +155,14 @@ const displayGrid = () => {
 }
 
 /**
- * 
+ * Attempts to display the time left before the user can place another pixel on the grid.
  */
 const displayTimeLeft = () => {
     fetch(Settings.server+Settings.waitTime+Settings.uidAsk+getUid())
     .then(response=>response.json())
     .then(data=>{
         let t = getTimeLeftTag();
-        t.innerHTML = `${Texts.timeLeft}${getSecondsFromMilliseconds(data.tempsAttente)}`;
+        t.innerHTML = `${Texts.timeLeft}${Utils.getSecondsFromMilliseconds(data.tempsAttente)}`;
     })
     .catch(error => console.error('Error :', error));
 }
@@ -255,6 +243,10 @@ const teamSelect = (uid, team) => {
 
 // ------ ADDING EVENTS TO ELEMENTS ------
 
+
+/**
+ * Saves the UID to local storage on button press.
+ */
 document.getElementById("save-uid").addEventListener("click", (event)=>{
     try{
         myStorage.setItem("uid", getUid());
@@ -265,6 +257,7 @@ document.getElementById("save-uid").addEventListener("click", (event)=>{
     }
 })
 
+/*- Team selection methods -*/
 document.getElementById("team-1-selection").addEventListener("click", (event)=>{
     let user = document.getElementById('uid-input').value;
     teamSelect(user, 1);
