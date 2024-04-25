@@ -244,9 +244,7 @@ const teamSelect = (uid, team) => {
 // ------ ADDING EVENTS TO ELEMENTS ------
 
 
-/**
- * Saves the UID to local storage on button press.
- */
+/*- Saving UID -*/
 document.getElementById("save-uid").addEventListener("click", (event)=>{
     try{
         myStorage.setItem("uid", getUid());
