@@ -1,21 +1,18 @@
 export class Infobox{
     static infoboxContainer = document.getElementById('infobox-container');
     static infoboxElement = document.getElementById('infobox');
-
-    static headerText = 'Info';
-    static content = 'Dummy';
-    static buttonText = 'OK';
+    static infoboxHeader = document.querySelector('#infobox-header p');
+    static infoboxContent = document.querySelector('#infobox-content p');
+    static infoboxButton = document.getElementById('infobox-confirm');
 
     static callInfobox = (header, message, button) => {
-        headerText = header;
-        content = message;
-        buttonText = button;
+        this.infoboxHeader.innerHTML = header;
+        this.infoboxContent.innerHTML = message;
+        this.infoboxButton.innerHTML = button;
         this.infoboxContainer.style.display='flex';
-        this.infoboxElement.style.display='flex';
     }
 
     static closeInfobox = () => {
         this.infoboxContainer.style.display='none';
-        this.infoboxElement.style.display='none';
     }
 }

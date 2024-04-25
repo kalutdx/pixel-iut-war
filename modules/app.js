@@ -66,7 +66,7 @@ const loadUid = () => {
         console.log("Successfully loaded UID");
     }
     catch (SecurityError){
-        console.log("Not allowed by browser");
+        Infobox.callInfobox(Unitxt.error, Unitxt.UIDBrowserSecurityError(false), Unitxt.ok);
     }
 }
 
@@ -254,10 +254,10 @@ document.getElementById("infobox-confirm").addEventListener("click", (event)=>{
 document.getElementById("save-uid").addEventListener("click", (event)=>{
     try{
         myStorage.setItem("uid", getUid());
-        console.log("Successfully saved UID");
+        Infobox.callInfobox(Unitxt.info, Unitxt.UIDSaveSuccessful, Unitxt.ok);
     }
     catch (SecurityError){
-        console.log("Not allowed by browser");
+        Infobox.callInfobox(Unitxt.error, Unitxt.UIDBrowserSecurityError(true), Unitxt.ok);
     }
 })
 

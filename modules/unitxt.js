@@ -18,5 +18,7 @@ export class Unitxt{
     static pixelPlacementError = 'An error has occured when attempting to place a pixel on the grid.';
     static tooFastWarning = 'You\'re too fast ! Try again later.';
 
+
+    static UIDSaveSuccessful = 'Successfully saved your UID.';
     static UIDBrowserSecurityError = (isSave) => `Can\'t ${isSave ? 'save':'load'} your UID. Check your browser settings.`;
 }

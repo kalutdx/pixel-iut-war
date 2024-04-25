@@ -110,14 +110,14 @@ body{
 /*------ Infobox style ------*/
 
 #infobox-container{
+    display:none;
+    justify-content: center;
+    z-index: 2;
     background-color: #00000040;
     transition:0.2s;
     position:fixed;
     width:100vw;
     height:100vh;
-    display:flex;
-    justify-content: center;
-    z-index: 2;
 }
 
 #infobox{
