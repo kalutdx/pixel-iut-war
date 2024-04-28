@@ -1,9 +1,7 @@
 /*This module name is a reference to the file that handles all texts in Phantasy Star Online Blue Burst.*/
 
 export class Unitxt{
-    /*------ INFOBOX ------*/
-    static ok = '';
-    
+    /*------ INFOBOX ------*/    
     static info = 'Info';
     static warning = 'Warning';
     static error = 'Error';
