@@ -2,7 +2,7 @@
 
 export class Unitxt{
     /*------ INFOBOX ------*/
-    static ok = 'Ok';
+    static ok = '';
     
     static info = 'Info';
     static warning = 'Warning';
