@@ -10,8 +10,13 @@
 
 /*------ Generic ------*/
 
+@font-face {
+    font-family: Roboto;
+    src: url("assets/fonts/roboto.ttf");
+}
+
 body{
-    font-family:'Gill Sans', sans-serif;
+    font-family:Roboto;
     margin:0;
     padding:0;
     background-color: var(--back-color);
@@ -21,6 +26,11 @@ body{
 .container{
     display:flex;
     flex-direction: column;
+}
+
+button{
+    font-family:Roboto;
+    cursor:pointer;
 }
 
 .block-scroll{
@@ -53,6 +63,7 @@ body{
     transition:0.05s;
     width:4px;
     height:4px;
+    cursor:pointer;
 }
 
 /*- Toolstrip -*/
@@ -61,16 +72,23 @@ body{
     position:fixed;
     display:flex;
     justify-content: space-between;
-    width:250px;
+    width:300px;
+    margin-bottom:50px;
+    padding:10px;
     align-self:flex-end;
+    background-color:var(--main-color);
+    color:var(--back-color);
+    box-shadow: 0px 0px 25px 1px #00000070;
+    border-radius:10px;
 }
 
 #color-input{
-    margin-bottom:50px;
     width:100px;
     height:50px;
     align-self: flex-end;
-    box-shadow: 0px 0px 5px #00000070;
+    background:none;
+    border:none;
+    cursor:pointer;
 }
 
 /*------ Menu style ------*/
@@ -78,7 +96,7 @@ body{
 #menu-container{
     color:white;
     background:var(--back-color);
-    z-index: 1;
+    z-index: 2;
     box-shadow: 0px 0px 5px #00000070;
 }
 
@@ -99,6 +117,26 @@ body{
 #menu-container footer{
     color:var(--footer-text);
     text-align: center;
+}
+
+#uid-section input{
+    background-color:var(--darker);
+    border:none;
+    height:20px;
+    color:var(--main-color);
+}
+
+#uid-section button{
+    background-color:var(--main-color);
+    border:none;
+    height:20px;
+}
+
+#team-selection button{
+    background-color:var(--main-color);
+    border:none;
+    height:25px;
+    width:70px;
 }
 
 /*- Play History -*/
@@ -156,4 +194,11 @@ body{
     width:20px;
     height:20px;
     text-align: center;
+}
+
+#infobox-confirm::after{
+    display:inline-block;
+    content:"\00d7";
+    font-weight:bold;
+    color:var(--text-color);
 }
