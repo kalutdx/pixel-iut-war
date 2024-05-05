@@ -278,8 +278,12 @@ document.getElementById("theme-selector").addEventListener("change", (event)=>{
     const selectedElement = event.target;
     const val = selectedElement.value;
     console.log(val);
-    const theme = Theme.themes.get(val);
-    theme.applyTheme();
+    if(val === Unitxt.option){
+
+    } else {
+        const theme = Theme.themes.get(val);
+        theme.applyTheme();
+    }
 })
 
 // ------ MAIN ------
@@ -290,6 +294,7 @@ const main = async () => {
     // Loading themes 
     Theme.addDefaultThemes();
     Theme.loadAllThemesToMenu();
+    Theme.addCustomOption();
     // Main loop
     while(true){
         displayGrid();

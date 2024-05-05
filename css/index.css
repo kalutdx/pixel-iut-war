@@ -1,3 +1,11 @@
+/*------ Almost generic ------*/
+#uid-section input, #theme-name-input{
+    background-color:var(--darker);
+    border:none;
+    height:20px;
+    color:var(--details-color);
+}
+
 /*------ Main section style ------*/
 
 #main-section{
@@ -84,13 +92,6 @@
     color:var(--main-color);
 }
 
-#uid-section input{
-    background-color:var(--darker);
-    border:none;
-    height:20px;
-    color:var(--main-color);
-}
-
 #uid-section button{
     background-color:var(--main-color);
     border:none;
@@ -105,10 +106,25 @@
 }
 
 /*- Themes -*/
+
+#theme-selection{
+    color:var(--details-color);
+}
+
 #theme-selection button{
     background-color:var(--main-color);
     border:none;
     height:20px;
+}
+
+#theme-customization-line{
+    font-size: 14px;
+    width:20vw;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }
 
 /*- Play History -*/

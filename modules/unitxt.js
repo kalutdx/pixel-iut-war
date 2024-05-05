@@ -22,6 +22,7 @@ export class Unitxt{
 
     static ThemeSaveSuccessful = 'Successfully saved your theme.';
     static ThemeChangeSuccessful = 'Theme changed.';
+    static ThemeInvalidName = 'Invalid theme name. Try another name.'
     static ThemeSecurityError = (isSave) => `Can\'t ${isSave ? 'save':'load'} your theme. Check your browser settings.`;
 
     /*------ THEMES ------*/
@@ -30,4 +31,5 @@ export class Unitxt{
     static mainColor = 'Main';
     static backColor = 'Back';
     static detailsCOlor = 'Details';
+    static themeName = 'Name'
 }

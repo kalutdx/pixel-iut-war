@@ -48,11 +48,22 @@
             </div>
             <h2>Themes</h2>
             <div id="theme-selection">
-                <select id="theme-selector" class="menu-content">
+                <div id="theme-selector-line">
+                    <select id="theme-selector" class="menu-content">
 
-                </select>
-                <button id="save-theme" class="hover-darkening">Save</button>
-                <button id="delete-theme" class="hover-darkening">Delete</button>
+                    </select>
+                    <input type="text" id="theme-name-input">
+                    <button id="save-theme" class="hover-darkening">Save</button>
+                    <button id="delete-theme" class="hover-darkening">Delete</button>
+                </div>
+                <div id="theme-customization-line" class="menu-content">
+                    <p id = "main-color-hint" class="theme-custom-hint">Main</p>
+                    <p id = "back-color-hint" class="theme-custom-hint">Back</p>
+                    <p id = "details-color-hint" class="theme-custom-hint">Details</p>
+                    <input type="color" id="main-color-selector">
+                    <input type="color" id="back-color-selector">
+                    <input type="color" id="details-color-selector">
+                </div>
             </div>
             <h1>Play history</h1>
             <table id="play-history-tab" class="menu-content">

@@ -1,5 +1,6 @@
 import { Settings } from "./settings.js";
 import { Infobox } from "./infobox.js";
+import { Unitxt } from "./unitxt.js";
 
 export class Theme{
     //All themes are stored here to be added as options.
@@ -68,8 +69,12 @@ export class Theme{
      * @param {string} text Details color. Any CSS color format is accepted.
      */
     static saveTheme = (name, main, back, text)=>{
-        let newTheme = new Theme(name, main, back, text);
-        this.saveThemesToLocalStorage();
+        if (name===Unitxt.option || name===""){
+            Infobox.callInfobox(Unitxt.ThemeInvalidName);
+        } else {
+            let newTheme = new Theme(name, main, back, text);
+            this.saveThemesToLocalStorage();
+        }
     }
     /**
      * Removes a specified theme from the themes map, then saves
@@ -100,5 +105,15 @@ export class Theme{
         this.saveTheme("IUT Light", "rgb(0,157,224)", "rgb(255, 255, 255)", "rgb(68,58,49)");
         this.saveTheme("IUT Dark", "rgb(0,157,224)", "rgb(25, 25, 25)", "rgb(255, 255, 255)");
         this.saveTheme("Nils's Choice", "rgb(236,76,86)", "rgb(36,41,51)", "rgb(246,240,233)");
+    }
+    /**
+     * Adds the custom theme option
+     */
+    static addCustomOption = ()=>{
+        const select = document.getElementById("theme-selector");
+        let option = document.createElement("option");
+            option.value=Unitxt.option;
+            option.innerHTML=Unitxt.option;
+            select.appendChild(option);
     }
 }
