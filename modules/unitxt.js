@@ -19,4 +19,8 @@ export class Unitxt{
 
     static UIDSaveSuccessful = 'Successfully saved your UID.';
     static UIDBrowserSecurityError = (isSave) => `Can\'t ${isSave ? 'save':'load'} your UID. Check your browser settings.`;
+
+    static ThemeSaveSuccessful = 'Successfully saved your theme.';
+    static ThemeChangeSuccessful = 'Theme changed.'
+    static ThemeSecurityError = 'Can\'t save your theme. Check your browser settings.'
 }
