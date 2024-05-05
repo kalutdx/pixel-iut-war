@@ -2,6 +2,7 @@ import { Settings } from "./settings.js";
 import { Infobox } from "./infobox.js";
 
 class Theme{
+    //All themes are stored here to be added as options.
     static themes = new Map();
     /**
      * Creates a new theme and adds it to the themes Map.
@@ -19,6 +20,9 @@ class Theme{
         this.text = details;
         Theme.themes.set(name, this);
     }
+    /**
+     * Get all themes stored in local storage.
+     */
     static getThemesFromLocalStorage = () => {
         try{
             let storage = localStorage;
@@ -31,6 +35,10 @@ class Theme{
             Infobox.callInfobox(Unitxt.error, Unitxt.ThemeSecurityError(false));
         }
     }
+    /**
+     * Save the current themes map in local storage.
+     * Separate from saveTheme.
+     */
     static saveThemesToLocalStorage = ()=>{
         try{
             let storage = localStorage;
@@ -42,11 +50,24 @@ class Theme{
         }
 
     }
+    /**
+     * Saves a theme to the themes map, then saves it to local storage.
+     * @param {string} name Theme name.
+     * @param {string} main Main color. Any CSS color format is accepted.
+     * @param {string} back Back color. Any CSS color format is accepted.
+     * @param {string} text Details color. Any CSS color format is accepted.
+     */
     static saveTheme = (name, main, back, text)=>{
         let newTheme = new Theme(false, name, main, back, text);
+        this.saveThemesToLocalStorage();
     }
+    /**
+     * Removes a specified theme from the themes map, then saves
+     * the new map to local storage.
+     * @param {string} name Theme name.
+     */
     static deleteTheme = (name)=>{
         Theme.themes.delete(name);
-
+        this.saveThemesToLocalStorage();
     }
 }

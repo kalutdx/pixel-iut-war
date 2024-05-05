@@ -1,3 +1,5 @@
+/*This class is used to store various important settings used across the whole app.
+These can be changed in case of some API changes.*/
 export class Settings{
     // API related settings
     // Server address
@@ -14,6 +16,7 @@ export class Settings{
     // Grid settings
     static gridWidth = 100;
     static gridHeight = 100;
+    static pixelSize = 4;
     // UID Length
     static uidLength = 8;
     // Local Storage related settings

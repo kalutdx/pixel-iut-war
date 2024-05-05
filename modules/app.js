@@ -4,13 +4,6 @@ import { Utils } from "./utils.js";
 import { Infobox } from "./infobox.js";
 import { Unitxt } from "./unitxt.js";
 
-// ------ VARIABLES ------
-
-/**
- * Zoom level. Deprecated.
- */
-const zoom = 4;
-
 // ------ GETTERS ------
 
 /**
@@ -141,8 +134,8 @@ const displayGrid = () => {
                 let col = document.createElement("td");
                 col.className = "pixel";
                 col.style.backgroundColor = c;
-                col.style.width = zoom;
-                col.style.height = zoom;
+                col.style.width = Settings.pixelSize;
+                col.style.height = Settings.pixelSize;
                 col.addEventListener("click", (event)=>{
                     let x = col.cellIndex;
                     let y = row.rowIndex;
