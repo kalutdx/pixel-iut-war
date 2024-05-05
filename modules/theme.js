@@ -21,6 +21,14 @@ class Theme{
         Theme.themes.set(name, this);
     }
     /**
+     * Changes the CSS color variables according to the theme's colors.
+     */
+    applyTheme = () =>{
+        document.documentElement.setAttribute("style", "--main-color:"+this.main);
+        document.documentElement.setAttribute("style", "--back-color:"+this.back);
+        document.documentElement.setAttribute("style", "--details-color:"+this.details);
+    }
+    /**
      * Get all themes stored in local storage.
      */
     static getThemesFromLocalStorage = () => {

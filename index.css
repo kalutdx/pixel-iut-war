@@ -2,7 +2,7 @@
 :root{
     --main-color:rgb(236,76,86);
     --back-color:rgb(36,41,51);
-    --text-color:rgb(246,240,233);
+    --details-color:rgb(246,240,233);
     --darker:rgba(0,0,0,0.3);
     --footer-text:rgba(255,255,255,0.6);
     --transparent:rgba(0,0,0,0);
@@ -20,7 +20,7 @@ body{
     margin:0;
     padding:0;
     background-color: var(--back-color);
-    color:var(--text-color);
+    color:var(--details-color);
 }
 
 .container{
@@ -31,6 +31,11 @@ body{
 button{
     font-family:Roboto;
     cursor:pointer;
+}
+
+.hover-darkening:hover{
+    transition:0.2s;
+    filter:brightness(70%);
 }
 
 .block-scroll{
@@ -139,6 +144,13 @@ button{
     width:70px;
 }
 
+/*- Themes -*/
+#theme-selection button{
+    background-color:var(--main-color);
+    border:none;
+    height:20px;
+}
+
 /*- Play History -*/
 
 #play-history-tab{
@@ -187,7 +199,7 @@ button{
 #infobox-confirm{
     cursor:pointer;
     font-weight:750;
-    color:var(--text-color);
+    color:var(--details-color);
     background-color: var(--darker);
     border:none;
     border-radius: 50%;
@@ -200,5 +212,5 @@ button{
     display:inline-block;
     content:"\00d7";
     font-weight:bold;
-    color:var(--text-color);
+    color:var(--details-color);
 }
