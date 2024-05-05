@@ -22,5 +22,5 @@ export class Unitxt{
 
     static ThemeSaveSuccessful = 'Successfully saved your theme.';
     static ThemeChangeSuccessful = 'Theme changed.'
-    static ThemeSecurityError = 'Can\'t save your theme. Check your browser settings.'
+    static ThemeSecurityError = (isSave) => `Can\'t ${isSave ? 'save':'load'} your theme. Check your browser settings.`;
 }

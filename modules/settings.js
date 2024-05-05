@@ -16,4 +16,6 @@ export class Settings{
     static gridHeight = 100;
     // UID Length
     static uidLength = 8;
+    // Local Storage related settings
+    static themeStorageName = "themes";
 }
