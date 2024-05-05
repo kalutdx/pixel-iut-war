@@ -3,6 +3,7 @@ import { Texts } from "./texts.js";
 import { Utils } from "./utils.js";
 import { Infobox } from "./infobox.js";
 import { Unitxt } from "./unitxt.js";
+import { Theme } from "./theme.js";
 
 // ------ GETTERS ------
 
@@ -272,11 +273,23 @@ document.getElementById("team-4-selection").addEventListener("click", (event)=>{
     teamSelect(user, 4);
 })
 
+/*- Theme change -*/
+document.getElementById("theme-selector").addEventListener("change", (event)=>{
+    const selectedElement = event.target;
+    const val = selectedElement.value;
+    console.log(val);
+    const theme = Theme.themes.get(val);
+    theme.applyTheme();
+})
+
 // ------ MAIN ------
 
 const main = async () => {
-    // Loading Local Storage
+    // Loading UID
     loadUid();
+    // Loading themes 
+    Theme.addDefaultThemes();
+    Theme.loadAllThemesToMenu();
     // Main loop
     while(true){
         displayGrid();

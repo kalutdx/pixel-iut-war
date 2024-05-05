@@ -1,10 +1,10 @@
 /*------ Variables ------*/
-:root{
-    --main-color:rgb(236,76,86);
-    --back-color:rgb(36,41,51);
-    --details-color:rgb(246,240,233);
+html{
+    --main-color:rgb(0,157,224);
+    --back-color:rgb(255, 255, 255);
+    --details-color:rgb(68,58,49);
     --darker:rgba(0,0,0,0.3);
-    --footer-text:rgba(255,255,255,0.6);
+    --darker-tab:rgba(0,0,0,0.45);
     --transparent:rgba(0,0,0,0);
 }
 
@@ -40,4 +40,8 @@ button{
 
 .block-scroll{
     overflow:hidden;
+}
+
+h1, h2{
+    color:var(--details-color);
 }

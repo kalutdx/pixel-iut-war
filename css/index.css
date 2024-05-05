@@ -76,7 +76,7 @@
 }
 
 #menu-container footer{
-    color:var(--footer-text);
+    color:var(--main-color);
     text-align: center;
 }
 
@@ -123,6 +123,10 @@
     color:var(--back-color);
     width:250px;
     padding:5px 0;
+}
+
+#play-history-content tr{
+    background-color: var(--darker-tab);
 }
 
 #play-history-content tr:nth-child(odd){

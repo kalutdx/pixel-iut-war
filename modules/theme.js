@@ -1,32 +1,34 @@
 import { Settings } from "./settings.js";
 import { Infobox } from "./infobox.js";
 
-class Theme{
+export class Theme{
     //All themes are stored here to be added as options.
     static themes = new Map();
     /**
      * Creates a new theme and adds it to the themes Map.
      * 
-     * @param {boolean} isDefault If true, this theme cannot be edited, nor removed.
      * @param {string} name Theme name.
      * @param {string} main Main color. Any CSS color format is accepted.
      * @param {string} back Back color. Any CSS color format is accepted.
      * @param {string} details Details color. Any CSS color format is accepted.
      */
-    constructor(isDefault, name, main, back, details){
-        this.isDefault = isDefault;
+    constructor(name, main, back, details){
         this.main = main;
         this.back = back;
-        this.text = details;
+        this.details = details;
         Theme.themes.set(name, this);
     }
     /**
      * Changes the CSS color variables according to the theme's colors.
      */
     applyTheme = () =>{
-        document.documentElement.setAttribute("style", "--main-color:"+this.main);
-        document.documentElement.setAttribute("style", "--back-color:"+this.back);
-        document.documentElement.setAttribute("style", "--details-color:"+this.details);
+        /*document.documentElement.style.cssText = "--main-color:"+this.main;
+        document.documentElement.style.cssText = "--back-color:"+this.back;
+        document.documentElement.style.cssText = "--details-color:"+this.details;*/
+        document.documentElement.style.setProperty("--main-color", this.main);
+        document.documentElement.style.setProperty("--back-color", this.back);
+        document.documentElement.style.setProperty("--details-color", this.details);
+        console.log("Theme changed, normally");
     }
     /**
      * Get all themes stored in local storage.
@@ -66,7 +68,7 @@ class Theme{
      * @param {string} text Details color. Any CSS color format is accepted.
      */
     static saveTheme = (name, main, back, text)=>{
-        let newTheme = new Theme(false, name, main, back, text);
+        let newTheme = new Theme(name, main, back, text);
         this.saveThemesToLocalStorage();
     }
     /**
@@ -77,5 +79,26 @@ class Theme{
     static deleteTheme = (name)=>{
         Theme.themes.delete(name);
         this.saveThemesToLocalStorage();
+    }
+    /**
+     * Adds all available themes to the theme selector.
+     */
+    static loadAllThemesToMenu = ()=>{
+        const select = document.getElementById("theme-selector");
+        select.innerHTML = "";
+        for (let key of Theme.themes.keys()){
+            let option = document.createElement("option");
+            option.value=key;
+            option.innerHTML=key;
+            select.appendChild(option);
+        }
+    }
+    /**
+     * Adds a bunch of premade themes.
+     */
+    static addDefaultThemes = ()=>{
+        this.saveTheme("IUT Light", "rgb(0,157,224)", "rgb(255, 255, 255)", "rgb(68,58,49)");
+        this.saveTheme("IUT Dark", "rgb(0,157,224)", "rgb(25, 25, 25)", "rgb(255, 255, 255)");
+        this.saveTheme("Nils's Choice", "rgb(236,76,86)", "rgb(36,41,51)", "rgb(246,240,233)");
     }
 }
