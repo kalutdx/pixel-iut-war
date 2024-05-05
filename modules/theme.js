@@ -23,9 +23,6 @@ export class Theme{
      * Changes the CSS color variables according to the theme's colors.
      */
     applyTheme = () =>{
-        /*document.documentElement.style.cssText = "--main-color:"+this.main;
-        document.documentElement.style.cssText = "--back-color:"+this.back;
-        document.documentElement.style.cssText = "--details-color:"+this.details;*/
         document.documentElement.style.setProperty("--main-color", this.main);
         document.documentElement.style.setProperty("--back-color", this.back);
         document.documentElement.style.setProperty("--details-color", this.details);
@@ -115,5 +112,23 @@ export class Theme{
             option.value=Unitxt.option;
             option.innerHTML=Unitxt.option;
             select.appendChild(option);
+    }
+    /**
+     * Display custom theme settings
+     */
+    static displayCustomOption = (shouldBeDisplayed)=>{
+        let consideredElements = document.querySelectorAll("#theme-name-input, #save-theme, #delete-theme, #theme-customization-line > *");
+        if (shouldBeDisplayed){
+            document.getElementById('main-color-selector').defaultValue = document.documentElement.style.getPropertyValue("--main-color");
+            document.getElementById('back-color-selector').defaultValue = document.documentElement.style.getPropertyValue("--back-color");
+            document.getElementById('details-color-selector').defaultValue = document.documentElement.style.getPropertyValue("--details-color");
+            for (const elem of consideredElements){
+                elem.classList.remove('display-none');
+            }
+        } else {
+            for (const elem of consideredElements){
+                elem.classList.add('display-none');
+            }
+        }
     }
 }

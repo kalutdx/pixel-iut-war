@@ -279,8 +279,9 @@ document.getElementById("theme-selector").addEventListener("change", (event)=>{
     const val = selectedElement.value;
     console.log(val);
     if(val === Unitxt.option){
-
+        Theme.displayCustomOption(true);
     } else {
+        Theme.displayCustomOption(false);
         const theme = Theme.themes.get(val);
         theme.applyTheme();
     }

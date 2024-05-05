@@ -45,3 +45,7 @@ button{
 h1, h2{
     color:var(--details-color);
 }
+
+.display-none{
+    display:none;
+}
