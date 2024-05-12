@@ -1,9 +1,6 @@
-<a name="readme-top"></a>
-<p align="center">
-  <img align=center src="assets/img/logo_256.png"/>
-</p>
-<h3 align='center'>PIW - Pixel IUT War</h3>
-<p align='center'>Un client web pour intéragir avec le jeu Pixel IUT War via la Pixel Art API.</p>
+![Logo](/assets/img/logo_256.png)
+#### PIW - Pixel IUT War
+Un client web pour intéragir avec le jeu Pixel IUT War via la Pixel Art API.
 
 # Table des matières
 * [A propos](#a-propos)
