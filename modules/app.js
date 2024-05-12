@@ -5,7 +5,6 @@ import { Unitxt } from "./unitxt.js";
 
 // ------ VARIABLES ------
 let dream = 0;
-let creditsDisplay = false;
 
 // ------ GETTERS ------
 
@@ -87,14 +86,16 @@ const updateLocalGrid = (color, x, y) => {
     }
 }
 
-const displayCredits = () =>{
+/**
+ * Display the credits page.
+ * @param {*} creditsDisplay Are the credits already displayed
+ */
+const displayCredits = (creditsDisplay) =>{
     const page = document.getElementById('credits');
     if(!creditsDisplay){
         page.style.display = 'flex';
-        creditsDisplay = true;
     } else {
         page.style.display = 'none';
-        creditsDisplay = false;
     }
 }
 
@@ -335,11 +336,11 @@ document.getElementById("snapshot-button").addEventListener("click", (event)=>{
 
 /*- Display credits -*/
 document.getElementById('credits-button').addEventListener('click', (event)=>{
-    displayCredits();
+    displayCredits(false);
 })
 
 document.getElementById('credits-close').addEventListener('click', (event)=>{
-    displayCredits();
+    displayCredits(true);
 })
 
 /*- Record key inputs -*/
