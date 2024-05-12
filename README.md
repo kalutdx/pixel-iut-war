@@ -8,6 +8,8 @@ Un client web pour intéragir avec le jeu Pixel IUT War via la Pixel Art API.
   * [Prérequis](#prérequis)
   * [Installation](#installation)
 * [Utilisation](#utilisation)
+* [Ajouts supplémentaires](#ajouts-supplémentaires)
+* [Autres idées](#autres-idées)
 * [Licence](#licence)
 * [Contacts](#contacts)
 * [Remerciements](#remerciements)
@@ -45,6 +47,21 @@ Le client se compose d'une grille de 100x100 pixels, et d'une barre d'outils. Po
 Depuis la barre d'outils, vous pouvez accéder au menu, prendre une capture de la grille sous format PNG, choisir la couleur du pixel que vous souhaitez poser et consulter le temps restant avant la pose d'un autre pixel.
 
 Vous devriez essayer de rêver. SEGA doit y être pour quelque chose.
+
+## Ajouts supplémentaires
+
+Je me suis permis d'ajouter un petit nombre de fonctionnalités supplémentaires :
+* Outil de capture de la grille
+* Sauvegarde de l'ID Utilisateur avec localStorage
+* Boîte d'informations qui s'affiche en cas d'erreurs ou d'informations
+* Mise à jour de la grille en local au moment de la pose pour l'expérience utilisateur
+* *Un oeuf de pâques qui fait rêver*
+
+## Autres idées
+
+Quelques ajouts que j'aurais souhaité faire, mais le temps et mon implémentation de la page en ont décidé autrement :
+* Zoom sur la grille
+* Changement de thèmes avec possibilité de choisir ses propres couleurs
 
 ## Licence
 
