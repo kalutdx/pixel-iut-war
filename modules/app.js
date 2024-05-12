@@ -58,7 +58,6 @@ let myStorage = localStorage;
 const loadUid = () => {
     try{
         document.getElementById('uid-input').value = myStorage.getItem("uid");
-        console.log("Successfully loaded UID");
     }
     catch (SecurityError){
         Infobox.callInfobox(Unitxt.UIDBrowserSecurityError(false));
@@ -188,7 +187,6 @@ const addPixel = (x, y) => {
         "col": x,
         "row": y
       }
-    console.log(JSON.stringify(toAdd));
     fetch(Settings.server+Settings.editPixel, {
         method: 'PUT',
         headers: {
@@ -325,7 +323,6 @@ document.getElementById("snapshot-button").addEventListener("click", (event)=>{
 
 /*- Record key inputs -*/
 document.addEventListener('keydown', (event)=>{
-    console.log(event.key);
     if (event.key === 's' && dream===0){
         dream++;
     } else if (event.key === 'e' && dream===1){
@@ -340,7 +337,6 @@ document.addEventListener('keydown', (event)=>{
     else{
         dream=0;
     }
-    console.log(dream);
 })
 
 // ------ MAIN ------
