@@ -36,3 +36,4 @@ Nils Durieux - <nils.durieux@etu.u-bordeaux.fr>
 
 * [JavaScript introduction course](https://js-but1.codenestedu.fr/docs/intro/)
 * [Pixel Art API documentation](https://pixel-api.codenestedu.fr/api-docs/)
+* [Roboto font](https://fonts.google.com/specimen/Roboto)
