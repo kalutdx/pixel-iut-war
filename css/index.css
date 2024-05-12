@@ -170,6 +170,10 @@
     color:var(--back-color);
 }
 
+#infobox-content p::first-letter{
+    text-transform: uppercase;
+}
+
 #infobox-confirm-container{
     margin:0;
     display:flex;

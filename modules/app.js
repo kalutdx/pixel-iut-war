@@ -1,5 +1,4 @@
 import { Settings } from "./settings.js";
-import { Texts } from "./texts.js";
 import { Utils } from "./utils.js";
 import { Infobox } from "./infobox.js";
 import { Unitxt } from "./unitxt.js";
@@ -152,14 +151,19 @@ const displayGrid = () => {
 /**
  * Attempts to display the time left before the user can place another pixel on the grid.
  */
-const displayTimeLeft = () => {
-    fetch(Settings.server+Settings.waitTime+Settings.uidAsk+getUid())
-    .then(response=>response.json())
-    .then(data=>{
-        let t = getTimeLeftTag();
-        t.innerHTML = `${Texts.timeLeft}${Utils.getSecondsFromMilliseconds(data.tempsAttente)}`;
-    })
-    .catch(error => console.error('Error :', error));
+const displayTimeLeft = (hasUID) => {
+    let t = getTimeLeftTag();
+    if(hasUID){
+        fetch(Settings.server+Settings.waitTime+Settings.uidAsk+getUid())
+        .then(response=>response.json())
+        .then(data=>{
+            t.innerHTML = `${Unitxt.timeLeft(hasUID)}${Utils.getSecondsFromMilliseconds(data.tempsAttente)}`;
+        })
+        .catch(error => console.error('Error :', error));
+    }
+    else{
+        t.innerHTML = Unitxt.timeLeft(hasUID);
+    }
 }
 
 /**
@@ -171,6 +175,7 @@ const displayTimeLeft = () => {
  * @param {number} y Row number
  */
 const addPixel = (x, y) => {
+    let ok;
     const toAdd = {
         "color": getColor(),
         "uid": getUid(),
@@ -186,19 +191,22 @@ const addPixel = (x, y) => {
         body: JSON.stringify(toAdd)
     })
         .then(response =>{
-            if (!response.ok){
+            ok = response.ok;
+            if (!ok){
                 return response.json().then(data=>{
-                    throw new Error(data.error);
+                    const msg = data['msg'];
+                    Infobox.callInfobox(msg);
                 });
             }
             return response.json();
         })
         .then(data => {
-            console.log('Pixel placed : ', data);
-            updateLocalGrid(toAdd.color, x, y);
+            if(ok){
+                updateLocalGrid(toAdd.color, x, y);
+            }
         })
         .catch(error =>{
-            console.error('Error while adding pixel to grid : ', error);
+            Infobox.callInfobox(Unitxt.pixelPlacementError);
         });
 }
 
@@ -209,6 +217,7 @@ const addPixel = (x, y) => {
  * @param {number} team 
  */
 const teamSelect = (uid, team) => {
+    let ok;
     const toAdd = {
         "uid": uid,
         "nouvelleEquipe": team
@@ -221,18 +230,22 @@ const teamSelect = (uid, team) => {
         body: JSON.stringify(toAdd)
     })
         .then(response =>{
-            if (!response.ok){
+            ok = response.ok;
+            if (!ok){
                 return response.json().then(data=>{
-                    throw new Error(data.error);
+                    const msg = data['msg'];
+                    Infobox.callInfobox(msg);
                 });
             }
             return response.json();
         })
         .then(data => {
-            console.log('Successfully added to a team : ', data);
+            if(ok){
+                Infobox.callInfobox(Unitxt.teamJoinSuccessful(team));
+            }
         })
         .catch(error =>{
-            console.error('Error while joining team : ', error);
+            Infobox.callInfobox(Unitxt.teamJoinError);
         });
 }
 
@@ -282,8 +295,10 @@ const main = async () => {
     while(true){
         displayGrid();
         if (getUid().length === Settings.uidLength){
-            displayTimeLeft();
+            displayTimeLeft(true);
             displayRecentActions();
+        } else {
+            displayTimeLeft(false);
         }
         await Utils.sleep(500);
     }

@@ -12,24 +12,13 @@ export class Unitxt{
 
     static missingTeam = 'You don\'t belong to any team. Go pick one !';
     static teamJoinError = 'An error has occured when attempting to join a team.';
+    static teamJoinSuccessful = (teamNumber) => `Successfully joined team ${teamNumber} !`;
     
     static pixelPlacementError = 'An error has occured when attempting to place a pixel on the grid.';
-    static tooFastWarning = 'You\'re too fast ! Try again later.';
-
 
     static UIDSaveSuccessful = 'Successfully saved your UID.';
     static UIDBrowserSecurityError = (isSave) => `Can\'t ${isSave ? 'save':'load'} your UID. Check your browser settings.`;
 
-    static ThemeSaveSuccessful = 'Successfully saved your theme.';
-    static ThemeChangeSuccessful = 'Theme changed.';
-    static ThemeInvalidName = 'Invalid theme name. Try another name.'
-    static ThemeSecurityError = (isSave) => `Can\'t ${isSave ? 'save':'load'} your theme. Check your browser settings.`;
-
-    /*------ THEMES ------*/
-    static option = '> Custom';
-
-    static mainColor = 'Main';
-    static backColor = 'Back';
-    static detailsCOlor = 'Details';
-    static themeName = 'Name'
+    /*------ Toolbox ------*/
+    static timeLeft = (hasUID) => hasUID?'Time remaining : ':'Awaiting UID...';
 }
