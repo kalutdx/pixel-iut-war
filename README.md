@@ -1,6 +1,6 @@
 # Pixel IUT War
 
-A Client made to interact with the game Pixel IUT War via the Pixel Art API.
+A web client made to interact with the game Pixel IUT War via the Pixel Art API.
 
 ## Getting started
 
@@ -23,6 +23,10 @@ To start a live server with Visual Studio Code, install any Live Server extensio
 ## Usage
 
 You'll be presented with a 100x100 canva and a tool bar. To be able to interact with the platform, you'll need to enter your UID in the settings menu you can access by scrolling down.
+
+## License
+
+This code is distributed under the [MIT License](./LICENSE.txt).
 
 ## Contacts
 
