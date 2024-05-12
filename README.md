@@ -59,3 +59,4 @@ Nils Durieux - <nils.durieux@etu.u-bordeaux.fr>
 * [Cours JavaScript de Nicholas Journet](https://js-but1.codenestedu.fr/docs/intro/)
 * [Documentation de l'API Pixel Art](https://pixel-api.codenestedu.fr/api-docs/)
 * [Roboto](https://fonts.google.com/specimen/Roboto)
+* [Pochette d'album de Ateravia par Anthony1, Sienna Sleep, Exodia](https://dismissyourself.bandcamp.com/album/ateriavia)
