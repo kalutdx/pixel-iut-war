@@ -1,9 +1,6 @@
 /*This class's name is a reference to the file that handles all texts in Phantasy Star Online Blue Burst.*/
 
 export class Unitxt{
-    /*------ BUTTONS ------*/
-    static saveButton = 'Save';
-    static deleteButton = 'Delete';
 
     /*------ INFOBOX ------*/  
     static unknownError = 'An unknown error has occured.';

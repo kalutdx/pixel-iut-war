@@ -96,7 +96,7 @@ const displayRecentActions = () => {
         const tab = getRecentTable();
         tab.innerHTML = '';
         for (const r of data){
-            const {nom, equipe, lastModificationPixel, banned} = r;
+            const {nom, equipe, lastModificationPixel, nbPixelsModifies, banned} = r;
             let row = document.createElement("tr");
             let c1 = document.createElement("td");
             c1.innerHTML = nom;
@@ -109,8 +109,11 @@ const displayRecentActions = () => {
                             \n${Utils.formatTime(lastModificationPixel)}`;
             row.appendChild(c3);
             let c4 = document.createElement("td");
-            c4.innerHTML = Utils.displayBoolean(banned);
+            c4.innerHTML = nbPixelsModifies;
             row.appendChild(c4);
+            let c5 = document.createElement("td");
+            c5.innerHTML = Utils.displayBoolean(banned);
+            row.appendChild(c5);
             tab.appendChild(row);
         }
     })
@@ -283,6 +286,38 @@ document.getElementById("team-3-selection").addEventListener("click", (event)=>{
 document.getElementById("team-4-selection").addEventListener("click", (event)=>{
     let user = document.getElementById('uid-input').value;
     teamSelect(user, 4);
+})
+
+/*- Take a snapshot -*/
+document.getElementById("snapshot-button").addEventListener("click", (event)=>{
+    let pic = new ImageData(Settings.gridWidth, Settings.gridHeight);
+    const grid = getGrid();
+    let x = 0;
+    let y = 0;
+    // Building image data
+    for (let r of grid.rows){
+        for (let c of r.cells){
+            let color = c.style.backgroundColor;
+            pic.data[y*(pic.width*4)+x*4] = Utils.getColorFromRgb(color, 0)
+            pic.data[y*(pic.width*4)+x*4+1] = Utils.getColorFromRgb(color, 1)
+            pic.data[y*(pic.width*4)+x*4+2] = Utils.getColorFromRgb(color, 2)
+            pic.data[y*(pic.width*4)+x*4+3] = Utils.getColorFromRgb(color, 3)
+            x++;
+        }
+        x=0;
+        y++;
+    }
+    let cv = document.createElement('canvas');
+    let ctx = cv.getContext("2d");
+    ctx.canvas.width = Settings.gridWidth;
+    ctx.canvas.height = Settings.gridHeight;
+    ctx.putImageData(pic, 0, 0);
+    let anchor = document.createElement('a');
+    let date = new Date();
+    let linkText = `${date.getFullYear()}${date.getMonth()}${date.getDate()}-${date.getHours()}${date.getMinutes()}${date.getSeconds()}.png`;
+    anchor.setAttribute('download', linkText);
+    anchor.setAttribute('href', cv.toDataURL('image/png').replace("image/png", "image/octet-stream"));
+    anchor.click();
 })
 
 

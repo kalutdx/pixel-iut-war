@@ -45,4 +45,21 @@ export class Utils{
         const [h, m, s] = newtime;
         return `${h}:${m}:${s}`;
     }
+
+    /**
+     * Get a color channel from an RGBa color string.
+     * If no opacity value is specified in the provided color,
+     * it will automatically be 1.
+     * 
+     * @param {*} color The color
+     * @param {*} channel The channel, from 0 to 3
+     * @returns r if channel is 0, g if it's 1, b if it's 2, a if it's 3.
+     */
+    static getColorFromRgb = (color, channel) => {
+        let r = color.substring(4,color.length-1).split(', ')
+        if (r.lenght = 3){
+            r[3] = "255";
+        }
+        return r[channel];
+    }
 }
