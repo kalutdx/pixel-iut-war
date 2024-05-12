@@ -3,19 +3,19 @@
 export class Unitxt{
 
     /*------ INFOBOX ------*/  
-    static unknownError = 'An unknown error has occured.';
+    static unknownError = 'Une erreur inconnue est survenue.';
     
-    static unknownUID = 'Unknown user. Please enter a correct UID and try again.';
+    static unknownUID = 'Utilisateur inconnu. Veuillez rentrer un ID valide et ressayez.';
 
-    static missingTeam = 'You don\'t belong to any team. Go pick one !';
-    static teamJoinError = 'An error has occured when attempting to join a team.';
-    static teamJoinSuccessful = (teamNumber) => `Successfully joined team ${teamNumber} !`;
+    static missingTeam = 'Vous ne faîtes pas parti d\'une équipe. Rejoignez-en une !';
+    static teamJoinError = 'Une erreur est survenue en rejoignant une équipe.';
+    static teamJoinSuccessful = (teamNumber) => `Vous avez rejoint l'équipe ${teamNumber} !`;
     
-    static pixelPlacementError = 'An error has occured when attempting to place a pixel on the grid.';
+    static pixelPlacementError = 'Une erreur est survenue en plaçant un pixel sur la grille.';
 
-    static UIDSaveSuccessful = 'Successfully saved your UID.';
-    static UIDBrowserSecurityError = (isSave) => `Can\'t ${isSave ? 'save':'load'} your UID. Check your browser settings.`;
+    static UIDSaveSuccessful = 'Sauvegarde de votre ID effectuée.';
+    static UIDBrowserSecurityError = (isSave) => `Impossible de ${isSave ? 'sauvegarder':'charger'} votre ID. Vérifiez vos paramètres de navigateur.`;
 
     /*------ Toolbox ------*/
-    static timeLeft = (hasUID) => hasUID?'Time remaining : ':'Awaiting UID...';
+    static timeLeft = (hasUID) => hasUID?'Temps restant : ':'En attente d\'ID...';
 }

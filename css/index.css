@@ -135,29 +135,7 @@
     background-color:var(--main-color);
     border:none;
     height:25px;
-    width:70px;
-}
-
-/*- Themes -*/
-
-#theme-selection{
-    color:var(--details-color);
-}
-
-#theme-selection button{
-    background-color:var(--main-color);
-    border:none;
-    height:20px;
-}
-
-#theme-customization-line{
-    font-size: 14px;
-    width:20vw;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    width:80px;
 }
 
 /*- Play History -*/
