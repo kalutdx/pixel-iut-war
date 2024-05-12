@@ -325,6 +325,7 @@ document.getElementById("snapshot-button").addEventListener("click", (event)=>{
 
 /*- Record key inputs -*/
 document.addEventListener('keydown', (event)=>{
+    console.log(event.key);
     if (event.key === 's' && dream===0){
         dream++;
     } else if (event.key === 'e' && dream===1){
@@ -333,12 +334,13 @@ document.addEventListener('keydown', (event)=>{
         dream++;
     } else if (event.key === 'a' && dream===3){
         dream++;
-    } else {
-        dream = 0;
-    }
-    if (event.key === 'Enter'){
+    } else if (event.key === 'Enter' && dream===4){
         window.location.href="../dream.html";
     }
+    else{
+        dream=0;
+    }
+    console.log(dream);
 })
 
 // ------ MAIN ------
