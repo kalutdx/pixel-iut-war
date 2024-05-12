@@ -3,6 +3,9 @@ import { Utils } from "./utils.js";
 import { Infobox } from "./infobox.js";
 import { Unitxt } from "./unitxt.js";
 
+// ------ VARIABLES ------
+let dream = 0;
+
 // ------ GETTERS ------
 
 /**
@@ -318,6 +321,24 @@ document.getElementById("snapshot-button").addEventListener("click", (event)=>{
     anchor.setAttribute('download', linkText);
     anchor.setAttribute('href', cv.toDataURL('image/png').replace("image/png", "image/octet-stream"));
     anchor.click();
+})
+
+/*- Record key inputs -*/
+document.addEventListener('keydown', (event)=>{
+    if (event.key === 's' && dream===0){
+        dream++;
+    } else if (event.key === 'e' && dream===1){
+        dream++;
+    } else if (event.key === 'g' && dream===2){
+        dream++;
+    } else if (event.key === 'a' && dream===3){
+        dream++;
+    } else {
+        dream = 0;
+    }
+    if (event.key === 'Enter'){
+        window.location.href="../dream.html";
+    }
 })
 
 // ------ MAIN ------
