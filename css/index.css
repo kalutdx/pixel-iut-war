@@ -51,7 +51,7 @@
     border-radius:10px;
 }
 
-#toolstrip-container button{
+#toolstrip-container button, #toolstrip-container a{
     transition:var(--transition);
     border:none;
     width:30px;
@@ -61,12 +61,13 @@
     background-repeat: no-repeat;
 }
 
-#toolstrip-container button:hover{
+#toolstrip-container button:hover, #toolstrip-container a:hover{
     background-color:var(--darker);
 }
 
 #toolstrip-container a{
     display:flex;
+    cursor:pointer;
 }
 
 #snapshot-button{
@@ -210,17 +211,24 @@
     color:var(--details-color);
 }
 
-/*------ Others ------*/
-
-#menu-pointer{
+/*--- Credits page ---*/
+#credits{
+    width:100vw;
+    height:100vh;
     position:fixed;
-    align-self:flex-end;
-    margin:5px;
+    display:none;
+    justify-content: center;
+    align-items: center;
+    z-index:3;
+    background-color: var(--darker);
 }
 
-#menu-pointer a{
-    color:var(--main-color);
-    font-weight:bold;
-    font-size:26px;
-    text-decoration: none;
+#credits-page{
+    background-color: var(--back-color);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px;
+    border-radius:10px;
+    box-shadow: 0px 0px 10px #000000FF;
 }

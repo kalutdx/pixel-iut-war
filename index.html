@@ -11,6 +11,16 @@
 
 <body>
     <div class="container">
+        <!-- Credits section-->
+        <div id="credits">
+            <div id="credits-page">
+                <img src="assets/img/logo_256.png" alt="Logo">
+                <div id="credits-content">
+                    <p>Page web, code et ressources faits par Nils Durieux.</p>
+                </div>
+                <button id="credits-close" class="hover-darkening">Fermer</button>
+            </div>
+        </div>
         <!-- Infobox section -->
         <div id="infobox">
             <div id="infobox-content">
@@ -27,7 +37,8 @@
             </table>
             <!-- Toolbox-->
             <div id="toolstrip-container">
-                <a href="#footer-content"><button id="settings-button" title="Paramètres"></button></a>
+                <button id="credits-button" title="Crédits"></button>
+                <a id="settings-button" title="Paramètres" href="#bottom"></a>
                 <button id="snapshot-button" title="Sauver l'image"></button>
                 <input type="color" id="color-input">
                 <div id="remaining-time">
@@ -67,6 +78,7 @@
             <footer>
                 <p id="footer-content">© 2024 IUT de Bordeaux, Nils Durieux.</p>
             </footer>
+            <div id="bottom"></div>
         </div>
     </div>
     <script type="module" src="/modules/app.js"></script>

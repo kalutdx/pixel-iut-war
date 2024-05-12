@@ -5,6 +5,7 @@ import { Unitxt } from "./unitxt.js";
 
 // ------ VARIABLES ------
 let dream = 0;
+let creditsDisplay = false;
 
 // ------ GETTERS ------
 
@@ -83,6 +84,17 @@ const updateLocalGrid = (color, x, y) => {
                 }
             }
         }
+    }
+}
+
+const displayCredits = () =>{
+    const page = document.getElementById('credits');
+    if(!creditsDisplay){
+        page.style.display = 'flex';
+        creditsDisplay = true;
+    } else {
+        page.style.display = 'none';
+        creditsDisplay = false;
     }
 }
 
@@ -319,6 +331,15 @@ document.getElementById("snapshot-button").addEventListener("click", (event)=>{
     anchor.setAttribute('download', linkText);
     anchor.setAttribute('href', cv.toDataURL('image/png').replace("image/png", "image/octet-stream"));
     anchor.click();
+})
+
+/*- Display credits -*/
+document.getElementById('credits-button').addEventListener('click', (event)=>{
+    displayCredits();
+})
+
+document.getElementById('credits-close').addEventListener('click', (event)=>{
+    displayCredits();
 })
 
 /*- Record key inputs -*/
