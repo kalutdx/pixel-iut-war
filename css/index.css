@@ -61,7 +61,7 @@
     background-repeat: no-repeat;
 }
 
-#toolstrip-container button:hover, #toolstrip-container a:hover{
+#snapshot-button:hover, #toolstrip-container a:hover{
     background-color:var(--darker);
 }
 
@@ -78,6 +78,22 @@
 #settings-button{
     background:none;
     background-image:url('../assets/img/settings-icon.png');
+}
+
+#credits-button{
+    background-color: var(--back-color);
+}
+
+#credits-button::after{
+    display:inline-block;
+    content:"i";
+    font-size:20px;
+    font-weight:bold;
+    color:var(--main-color);
+}
+
+#credits-button:hover{
+    background-color:var(--specific-back-color);
 }
 
 
@@ -192,7 +208,7 @@
     flex-direction:row-reverse;
 }
 
-#infobox-confirm{
+#infobox-confirm, #credits-close{
     cursor:pointer;
     font-weight:750;
     color:var(--details-color);
@@ -204,7 +220,7 @@
     text-align: center;
 }
 
-#infobox-confirm::after{
+#infobox-confirm::after, #credits-close::after{
     display:inline-block;
     content:"\00d7";
     font-weight:bold;
@@ -231,4 +247,27 @@
     padding:20px;
     border-radius:10px;
     box-shadow: 0px 0px 10px #000000FF;
+    text-align: end;
+    height:300px;
+    width:800px;
+}
+
+#credits-page p{
+    margin:0;
+}
+
+#credits-page h1{
+    margin:0;
+    color:var(--main-color);
+    font-size:64px;
+}
+
+#credits-page a{
+    color:var(--link);
+}
+
+#credits-close{
+    align-self:flex-start;
+    width:25px;
+    height:25px;
 }

@@ -6,6 +6,9 @@
     --darker:rgba(0,0,0,0.3);
     --darker-tab:rgba(0,0,0,0.45);
     --transparent:rgba(0,0,0,0);
+    --link:rgba(246,240,233,0.6);
+
+    --specific-back-color:rgb(24,27,33);
     
     --transition:0.2s;
 }
