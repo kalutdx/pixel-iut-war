@@ -6,14 +6,14 @@
 <p align='center'>Un client web pour intéragir avec le jeu Pixel IUT War via la Pixel Art API.</p>
 
 # Table des matières
-* A propos
-* Pour commencer
-  * Prérequis
-  * Installation
-* Utilisation
-* License
-* Contacts
-* Remerciements
+* [A propos](#a-propos)
+* [Pour commencer](#pour-commencer)
+  * [Prérequis](#prérequis)
+  * [Installation](#installation)
+* [Utilisation](#utilisation)
+* [Licence](#licence)
+* [Contacts](#contacts)
+* [Remerciements](#remerciements)
 
 ## A propos
 
@@ -49,7 +49,7 @@ Depuis la barre d'outils, vous pouvez accéder au menu, prendre une capture de l
 
 Vous devriez essayer de rêver. SEGA doit y être pour quelque chose.
 
-## License
+## Licence
 
 Ce code est distribué sous [Licence MIT](./LICENSE.txt).
 
