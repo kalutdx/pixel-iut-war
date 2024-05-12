@@ -320,7 +320,6 @@ document.getElementById("snapshot-button").addEventListener("click", (event)=>{
     anchor.click();
 })
 
-
 // ------ MAIN ------
 
 const main = async () => {

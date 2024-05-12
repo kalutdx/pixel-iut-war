@@ -29,7 +29,6 @@
 }
 
 .pixel{
-    transition:0.05s;
     width:4px;
     height:4px;
     cursor:pointer;
@@ -40,7 +39,7 @@
 #toolstrip-container{
     position:fixed;
     display:flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width:350px;
     margin-bottom:50px;
     padding:10px;
@@ -52,18 +51,37 @@
     border-radius:10px;
 }
 
-#snapshot-button{
-    background:none;
+#toolstrip-container button{
+    transition:var(--transition);
     border:none;
-    background-image:url('../assets/img/snapshot-icon.png');
+    width:30px;
+    height:30px;
+    border-radius:50%;
     background-size:cover;
     background-repeat: no-repeat;
-    width:40px;
-    height:40px;
 }
 
+#toolstrip-container button:hover{
+    background-color:var(--darker);
+}
+
+#toolstrip-container a{
+    display:flex;
+}
+
+#snapshot-button{
+    background:none;
+    background-image:url('../assets/img/snapshot-icon.png');
+}
+
+#settings-button{
+    background:none;
+    background-image:url('../assets/img/settings-icon.png');
+}
+
+
 #color-input{
-    width:100px;
+    width:80px;
     height:50px;
     align-self: flex-end;
     background:none;
@@ -212,4 +230,19 @@
     content:"\00d7";
     font-weight:bold;
     color:var(--details-color);
+}
+
+/*------ Others ------*/
+
+#menu-pointer{
+    position:fixed;
+    align-self:flex-end;
+    margin:5px;
+}
+
+#menu-pointer a{
+    color:var(--main-color);
+    font-weight:bold;
+    font-size:26px;
+    text-decoration: none;
 }

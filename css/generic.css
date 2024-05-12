@@ -1,11 +1,13 @@
 /*------ Variables ------*/
-html{
+:root{
     --main-color:rgb(236,76,86);
     --back-color:rgb(36,41,51);
     --details-color:rgb(246,240,233);
     --darker:rgba(0,0,0,0.3);
     --darker-tab:rgba(0,0,0,0.45);
     --transparent:rgba(0,0,0,0);
+    
+    --transition:0.2s;
 }
 
 /*------ Generic ------*/
@@ -34,7 +36,7 @@ button{
 }
 
 .hover-darkening:hover{
-    transition:0.2s;
+    transition:var(--transition);
     filter:brightness(70%);
 }
 
