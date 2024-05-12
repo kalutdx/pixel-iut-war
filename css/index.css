@@ -45,10 +45,21 @@
     margin-bottom:50px;
     padding:10px;
     align-self:flex-end;
+    align-items:center;
     background-color:var(--main-color);
     color:var(--back-color);
     box-shadow: 0px 0px 25px 1px #00000070;
     border-radius:10px;
+}
+
+#snapshot-button{
+    background:none;
+    border:none;
+    background-image:url('../assets/img/snapshot-icon.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    width:40px;
+    height:40px;
 }
 
 #color-input{
@@ -58,6 +69,10 @@
     background:none;
     border:none;
     cursor:pointer;
+}
+
+#remaining-time{
+    font-weight:bold;
 }
 
 /*------ Menu style ------*/
