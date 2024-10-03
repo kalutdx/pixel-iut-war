@@ -3,6 +3,7 @@
 Un client web pour intéragir avec le jeu Pixel IUT War via la Pixel Art API.
 
 # Table des matières
+* [Avertissement](#avertissement)
 * [A propos](#a-propos)
 * [Pour commencer](#pour-commencer)
   * [Prérequis](#prérequis)
@@ -13,6 +14,12 @@ Un client web pour intéragir avec le jeu Pixel IUT War via la Pixel Art API.
 * [Licence](#licence)
 * [Contacts](#contacts)
 * [Remerciements](#remerciements)
+
+## Avertissement
+
+L'API n'étant plus en service, ce client ne peut plus fonctionner correctement.
+
+La pose de pixel et leur mise à jour automatique ne fonctionne par conséquent plus.
 
 ## A propos
 
